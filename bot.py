@@ -8,9 +8,14 @@ from telegram.ext import (
 import os
 from dotenv import load_dotenv
 
+# Memuat file .env dan mengambil token
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 
+# Pengecekan token
+if not TOKEN:
+    print("Token tidak ditemukan! Pastikan Anda sudah menambahkan BOT_TOKEN di file .env.")
+    exit(1)
 
 # /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -27,7 +32,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif "assalamualaikum" in pesan:
         await update.message.reply_text("Waalaikumsalam!")
     elif "sok keras admin" in pesan:
-        await update.message.reply_text("sini maju lu semua, biar gue bantai")
+        await update.message.reply_text("sini maju lu semua biar gue bantai")
     else:
         await update.message.reply_text(f"Echo: {update.message.text}")
 
@@ -35,6 +40,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def main():
     app = ApplicationBuilder().token(TOKEN).build()
 
+    # Menambahkan handler
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, auto_reply))
 
@@ -44,4 +50,3 @@ async def main():
 # Jalankan bot
 if __name__ == "__main__":
     asyncio.run(main())
-
