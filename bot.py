@@ -20,12 +20,10 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("Maaf, saya tidak mengerti.")
 
-app = ApplicationBuilder().token(TOKEN).build()
+application = ApplicationBuilder().token('YOUR_BOT_TOKEN').build()
 
-app.add_handler(CommandHandler("start", start))
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, auto_reply))
+application.add_handler(CommandHandler("start", start))
+application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
 
 print("Bot berjalan...")
-app.run_polling()
-
 app.run_polling()
