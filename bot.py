@@ -3,8 +3,11 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Con
 
 TOKEN = "7671110150:AAGSl9BFTFuY8zxuEELmK2tS9x19p49GJCo"
 
+async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(f"Echo: {update.message.text}")
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Halo! selamat datang")
+    await update.message.reply("Hello, I am your bot!")
 
 async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     pesan = update.message.text.lower()  # ubah ke huruf kecil untuk memudahkan pencocokan
