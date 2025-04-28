@@ -39,7 +39,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif "sok keras admin" in pesan:
         await update.message.reply_text("sini maju lu semua biar gue bantai")
     else:
-        await update.message.reply_text(f"Echo: {update.message.text}")
+        await update.message.reply_text(f"saya tidak mengerti: {update.message.text}")
 
 # Main function
 async def main():
