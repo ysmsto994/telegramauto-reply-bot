@@ -30,7 +30,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     pesan = update.message.text.lower()
     logging.info(f"Pesan diterima: {pesan}")
-    if "utc" in pesan or "jam utc" in pesan:
+    if "utc" in pesan or "jam" in pesan:
         # Ambil waktu UTC saat ini
         utc_time = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
