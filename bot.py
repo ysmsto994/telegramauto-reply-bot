@@ -1,16 +1,24 @@
+import asyncio
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
+from telegram.ext import (
+    ApplicationBuilder, CommandHandler,
+    MessageHandler, ContextTypes, filters
+)
 
-TOKEN = "7671110150:AAGSl9BFTFuY8zxuEELmK2tS9x19p49GJCo"
+import os
+from dotenv import load_dotenv
 
-async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(f"Echo: {update.message.text}")
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
 
+
+# /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply("Hello, I am your bot!")
+    await update.message.reply_text("Hello, I am your bot!")
 
+# Auto-reply handler
 async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    pesan = update.message.text.lower()  # ubah ke huruf kecil untuk memudahkan pencocokan
+    pesan = update.message.text.lower()
 
     if "hai" in pesan:
         await update.message.reply_text("Hai juga! 😊")
@@ -19,14 +27,21 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif "assalamualaikum" in pesan:
         await update.message.reply_text("Waalaikumsalam!")
     elif "sok keras admin" in pesan:
-        await update.message.reply_text("sini maju lu semua,biar gue bantai")
+        await update.message.reply_text("sini maju lu semua, biar gue bantai")
     else:
-        await update.message.reply_text("Maaf, saya tidak mengerti.")
+        await update.message.reply_text(f"Echo: {update.message.text}")
 
-application = ApplicationBuilder().token('YOUR_BOT_TOKEN').build()
+# Main function
+async def main():
+    app = ApplicationBuilder().token(TOKEN).build()
 
-application.add_handler(CommandHandler("start", start))
-application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, auto_reply))
 
-print("Bot berjalan...")
-app.run_polling()
+    print("Bot berjalan...")
+    await app.run_polling()
+
+# Jalankan bot
+if __name__ == "__main__":
+    asyncio.run(main())
+
