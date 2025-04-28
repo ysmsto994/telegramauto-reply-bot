@@ -29,8 +29,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     pesan = update.message.text.lower()
     logging.info(f"Pesan diterima: {pesan}")
+    if "utc" in pesan or "jam utc" in pesan:
+        # Ambil waktu UTC saat ini
+        utc_time = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
-    if "hai" in pesan:
+        # Kirim gambar dan waktu UTC
+        url_gambar = "https://drive.google.com/file/d/1sMkTVmFaTube-GFQAt1BjrHcgJIua5xt/view?usp=drive_link"
+        await update.message.reply_photo(photo=url_gambar, caption=f"Ini adalah waktu UTC saat ini: {utc_time}")
+    elif "hai" in pesan:
         await update.message.reply_text("Hai juga! 😊")
     elif "anjing" in pesan:
         await update.message.reply_text("lo yang kaya anjing🦮")
@@ -39,7 +45,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif "sok keras admin" in pesan:
         await update.message.reply_text("sini maju lu semua biar gue bantai")
     else:
-        await update.message.reply_text(f"saya tidak mengerti: {update.message.text}")
+        await update.message.reply_text(f"saya tidak mengerti: {saya hanya keledai}")
 
 # Main function
 async def main():
