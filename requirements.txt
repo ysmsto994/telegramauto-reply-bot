@@ -2,3 +2,4 @@ pyTelegramBotAPI
 python-telegram-bot
 python-telegram-bot>=20.0,<21.0
 urllib3==1.26.10
+python-dotenv
