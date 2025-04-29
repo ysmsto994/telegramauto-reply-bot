@@ -43,8 +43,8 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("lo yang kaya anjing🦮")
     elif "assalamualaikum" in pesan:
         await update.message.reply_text("Waalaikumsalam!")
-    elif "sok keras admin" in pesan:
-        await update.message.reply_text("sini maju lu semua biar gue bantai")
+    elif "sok keras" in pesan or "sok" in pesan:
+        await update.message.reply_text("gass by 1!!!")
     else:
         await update.message.reply_text(f"saya tidak mengerti: saya hanya keledai")
 
