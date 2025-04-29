@@ -39,6 +39,8 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_photo(photo=url_gambar, caption=f"Ini adalah waktu UTC saat ini: {utc_time}")
     elif "hai" in pesan:
         await update.message.reply_text("Hai juga! 😊")
+    elif "reva" in pesan:
+        await update.message.reply_text("gila!wkwkwk")
     elif "hitamkan" in pesan:
         await update.message.reply_text("mari kita hitamkan bersama! 😊")
     elif "jarvis" in pesan:
