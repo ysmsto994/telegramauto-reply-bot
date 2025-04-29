@@ -39,18 +39,18 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_photo(photo=url_gambar, caption=f"Ini adalah waktu UTC saat ini: {utc_time}")
     elif "hai" in pesan:
         await update.message.reply_text("Hai juga! 😊")
-    elif "robot" in pesan:
-        await update.message.reply_text("saya bukan bot!saya jin😊")
+    elif "jarvis" in pesan:
+        await update.message.reply_text("hadir tuan")
     elif "anjing" in pesan:
         await update.message.reply_text("lo yang kaya anjing🦮")
     elif "assalamualaikum" in pesan:
         await update.message.reply_text("Waalaikumsalam!")
+    elif "robot" in pesan:
+        await update.message.reply_text("saya bukan robot!")
     elif "sok" in pesan:
-        await update.message.reply_text("gass by 1!!!")
-    elif "bagi" in pesan:
-        await update.message.reply_text("cari dong jangan ngemis,wkwk")
+        await update.message.reply_text("gass,by1 kita")
     else:
-         await update.message.reply_text(f"saya tidak mengerti: saya hanya jintoamang")
+        await update.message.reply_text(f"saya tidak mengerti: saya hanya jin")
 
 # Main function
 async def main():
@@ -70,4 +70,3 @@ if __name__ == "__main__":
     nest_asyncio.apply()
 
     asyncio.get_event_loop().run_until_complete(main())
-
