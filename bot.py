@@ -39,8 +39,10 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_photo(photo=url_gambar, caption=f"Ini adalah waktu UTC saat ini: {utc_time}")
     elif "hai" in pesan:
         await update.message.reply_text("Hai juga! 😊")
+    elif "hitamkan" in pesan:
+        await update.message.reply_text("mari kita hitamkan bersama! 😊")
     elif "jarvis" in pesan:
-        await update.message.reply_text("hadir tuan")
+        await update.message.reply_text("hadir tuan👑")
     elif "anjing" in pesan:
         await update.message.reply_text("lo yang kaya anjing🦮")
     elif "assalamualaikum" in pesan:
@@ -50,7 +52,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif "sok" in pesan:
         await update.message.reply_text("gass,by1 kita")
     else:
-        await update.message.reply_text(f"saya tidak mengerti: saya hanya jin")
+        await update.message.reply_text(f"saya tidak mengerti: saya hanya pelayan rendahan")
 
 # Main function
 async def main():
